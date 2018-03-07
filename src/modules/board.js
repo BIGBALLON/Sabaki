@@ -390,30 +390,31 @@ class Board {
         sign = sign > 0 ? 1 : -1
         move.set(vertex, sign)
 
-        // Remove captured stones
+        // Since Gomoku no need to remove captured stones
+        // // Remove captured stones
 
-        let deadNeighbors = move.getNeighbors(vertex)
-            .filter(n => move.get(n) === -sign && !move.hasLiberties(n))
+        // let deadNeighbors = move.getNeighbors(vertex)
+        //     .filter(n => move.get(n) === -sign && !move.hasLiberties(n))
 
-        for (let n of deadNeighbors) {
-            if (move.get(n) === 0) continue
+        // for (let n of deadNeighbors) {
+        //     if (move.get(n) === 0) continue
 
-            for (let c of move.getChain(n)) {
-                move.set(c, 0)
-                move.captures[(-sign + 1) / 2]++
-            }
-        }
+        //     for (let c of move.getChain(n)) {
+        //         move.set(c, 0)
+        //         move.captures[(-sign + 1) / 2]++
+        //     }
+        // }
 
-        move.set(vertex, sign)
+        // move.set(vertex, sign)
 
-        // Detect suicide
+        // // Detect suicide
 
-        if (deadNeighbors.length === 0 && !move.hasLiberties(vertex)) {
-            for (let c of move.getChain(vertex)) {
-                move.set(c, 0)
-                move.captures[(sign + 1) / 2]++
-            }
-        }
+        // if (deadNeighbors.length === 0 && !move.hasLiberties(vertex)) {
+        //     for (let c of move.getChain(vertex)) {
+        //         move.set(c, 0)
+        //         move.captures[(sign + 1) / 2]++
+        //     }
+        // }
 
         return move
     }
